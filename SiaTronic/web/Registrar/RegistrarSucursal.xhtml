@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdSucursal:" for="idSucursal" />
+                    <p:inputText id="idSucursal" value="#{sucursalCon.sucursal.idSucursal}" title="IdSucursal" required="true" requiredMessage="The IdSucursal field is required."/>
+                    <p:outputLabel value="Direccion:" for="direccion" />
+                    <p:inputText id="direccion" value="#{sucursalCon.sucursal.direccion}" title="Direccion" />
+                    <p:outputLabel value="Telefono:" for="telefono" />
+                    <p:inputText id="telefono" value="#{sucursalCon.sucursal.telefono}" title="Telefono" />
+                    <p:outputLabel value="Ciudad:" for="ciudad" />
+                    <p:inputText id="ciudad" value="#{sucursalCon.sucursal.ciudad}" title="Ciudad" />
+                    <p:outputLabel value="IdCliente:" for="idCliente" />
+                    <p:selectOneMenu id="idCliente" value="#{sucursalCon.sucursal.idCliente}" required="true" requiredMessage="The IdCliente field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{sucursalCon.listarCliente()}" var="clien" itemValue="#{clien.idCliente}" itemLabel="#{clien.idUsuario}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+                
+                <p:commandButton id="bteRegistrar" value="Registrar" action="#{sucursalCon.registrarSucursal()}"></p:commandButton>
+                
+            </h:form>
+        </f:view>
+
+        
+        
+    </h:body>
+</html>
+

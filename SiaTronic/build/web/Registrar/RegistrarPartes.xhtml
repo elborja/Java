@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdDetalle:" for="idDetalle" />
+                    <p:inputText id="idDetalle" value="#{parteReparacionCon.partereparacion.idDetalle}" title="IdDetalle" required="true" requiredMessage="The IdDetalle field is required."/>
+                    <p:outputLabel value="Cantidad:" for="cantidad" />
+                    <p:inputText id="cantidad" value="#{parteReparacionCon.partereparacion.cantidad}" title="Cantidad" />
+                    <p:outputLabel value="NumIncidente:" for="numIncidente" />
+                    <p:selectOneMenu id="numIncidente" value="#{parteReparacionCon.partereparacion.numIncidente}" required="true" requiredMessage="The NumIncidente field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="ParteSerie:" for="parteSerie" />
+                    <p:selectOneMenu id="parteSerie" value="#{parteReparacionCon.partereparacion.parteSerie}" required="true" requiredMessage="The ParteSerie field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                    
+                    <p:selectOneMenu id="idIncidente" value="#{parteReparacionCon.incidente.numIncidente}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{parteReparacionCon.listarIncientes()}" var="prove2" itemValue="#{prove2.numIncidente}" itemLabel="#{prove2.numIncidente}"/>
+                    </p:selectOneMenu>
+                    
+                    <p:selectOneMenu id="idProveedor" value="#{parteReparacionCon.inventario.serie}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{parteReparacionCon.listarInventario()}" var="prove1" itemValue="#{prove1.serie}" itemLabel="#{prove1.serie}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+        
+    </h:body>
+</html>
+

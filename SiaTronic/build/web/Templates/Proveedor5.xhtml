@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Plantilla2.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+<h:form id="form">           
+    <p:growl id="msgs" showDetail="true" />
+ 
+    <h3 style="margin-top:0">Basic</h3>
+    <p:accordionPanel>
+        <p:tab title="Godfather Part I">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+                <h:outputText
+                    value="The story begins as Don Vito Corleone..." />
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="IdProveedor:" for="idProveedor" />
+                            <p:inputText id="idProveedor" value="#{proveedorCon.proveedor.idProveedor}" title="IdProveedor" required="true" requiredMessage="The IdProveedor field is required."/>
+                            <p:outputLabel value="Nombre:" for="nombre" />
+                            <p:inputText id="nombre" value="#{proveedorCon.proveedor.nombre}" title="Nombre" />
+                            <p:outputLabel value="Nit:" for="nit" />
+                            <p:inputText id="nit" value="#{proveedorCon.proveedor.nit}" title="Nit" />
+                            <p:outputLabel value="Direccion:" for="direccion" />
+                            <p:inputText id="direccion" value="#{proveedorCon.proveedor.direccion}" title="Direccion" />
+                            <p:outputLabel value="Telefono:" for="telefono" />
+                            <p:inputText id="telefono" value="#{proveedorCon.proveedor.telefono}" title="Telefono" />
+                        </p:panelGrid>
+                        <h:commandButton id="btnRegistrar" value="Registrar" action="#{proveedorCon.registrarProveedor()}"></h:commandButton>
+                         
+                        
+                    </h:form>
+                </f:view>
+
+                
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Godfather Part II">
+            <h:panelGrid columns="2" cellpadding="10">
+                
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{proveedorCon.listarProveedor()}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdProveedor"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idProveedor}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombre}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nit"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nit}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Direccion"/>
+                                </f:facet>
+                                <h:outputText value="#{item.direccion}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Telefono"/>
+                                </f:facet>
+                                <h:outputText value="#{item.telefono}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+                
+                <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
+                <h:outputText value="Francis Ford Coppola's legendary..." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Godfather Part III">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+                <h:outputText value="After a break of more than 15 years..." />
+            </h:panelGrid>
+        </p:tab>
+    </p:accordionPanel>
+        
+        </h:form>
+    </ui:define>
+
+</ui:composition>

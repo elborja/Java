@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdTipoEquipo:" for="idTipoEquipo" />
+                    <p:inputText id="idTipoEquipo" value="#{tipoEquipoCon.tipoequipo.idTipoEquipo}" title="IdTipoEquipo" required="true" requiredMessage="The IdTipoEquipo field is required."/>
+                    <p:outputLabel value="Descripcion:" for="descripcion" />
+                    <p:inputText id="descripcion" value="#{tipoEquipoCon.tipoequipo.descripcion}" title="Descripcion" />
+                </p:panelGrid>
+                
+                <p:commandButton id="bteRegistrar" value="Registrar1" action="#{tipoEquipoCon.actualizarTipoEquipo1()}"></p:commandButton>
+                
+            </h:form>
+        </f:view>
+
+        
+        
+    </h:body>
+</html>
+

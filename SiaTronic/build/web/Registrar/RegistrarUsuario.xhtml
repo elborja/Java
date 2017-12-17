@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdUsuario:" for="idUsuario" />
+                    <p:inputText id="idUsuario" value="#{usuarioCon.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
+                    <p:outputLabel value="Nombre:" for="nombre" />
+                    <p:inputText id="nombre" value="#{usuarioCon.usuario.nombre}" title="Nombre" />
+                    <p:outputLabel value="PrimerApellido:" for="primerApellido" />
+                    <p:inputText id="primerApellido" value="#{usuarioCon.usuario.primerApellido}" title="PrimerApellido" />
+                    <p:outputLabel value="SegundoApellido:" for="segundoApellido" />
+                    <p:inputText id="segundoApellido" value="#{usuarioCon.usuario.segundoApellido}" title="SegundoApellido" />
+                    <p:outputLabel value="DocumentoIdentificacion:" for="documentoIdentificacion" />
+                    <p:inputText id="documentoIdentificacion" value="#{usuarioCon.usuario.documentoIdentificacion}" title="DocumentoIdentificacion" />
+                    <p:outputLabel value="Email:" for="email" />
+                    <p:inputText id="email" value="#{usuarioCon.usuario.email}" title="Email" />
+                    <p:outputLabel value="Direccion:" for="direccion" />
+                    <p:inputText id="direccion" value="#{usuarioCon.usuario.direccion}" title="Direccion" />
+                    <p:outputLabel value="Telefono:" for="telefono" />
+                    <p:inputText id="telefono" value="#{usuarioCon.usuario.telefono}" title="Telefono" />
+                    <p:outputLabel value="Telefono2:" for="telefono2" />
+                    <p:inputText id="telefono2" value="#{usuarioCon.usuario.telefono2}" title="Telefono2" />
+                    <p:outputLabel value="Telefono3:" for="telefono3" />
+                    <p:inputText id="telefono3" value="#{usuarioCon.usuario.telefono3}" title="Telefono3" />
+                    <p:outputLabel value="FechaCreacion:" for="fechaCreacion" />
+                    <p:inputText id="fechaCreacion" value="#{usuarioCon.usuario.fechaCreacion}" title="FechaCreacion" required="true" requiredMessage="The FechaCreacion field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </p:inputText>
+                    <p:outputLabel value="IdEstado:" for="idEstado" />
+                    <p:selectOneMenu id="idEstado" value="#{usuarioCon.usuario.idEstado}" required="true" requiredMessage="The IdEstado field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{usuarioCon.listarEstadoUsuario()}" var="esta" itemValue="#{esta.idEstado}" itemLabel="#{esta.estado}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="IdTipoDocumento:" for="idTipoDocumento" />
+                    <p:selectOneMenu id="idTipoDocumento" value="#{usuarioCon.usuario.idTipoDocumento}" required="true" requiredMessage="The IdTipoDocumento field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{usuarioCon.listarTipoDocumento()}" var="tipod" itemValue="#{tipod.idTipoDocumento}" itemLabel="#{tipod.tipoDocumento}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="UsuarioContrasena:" for="usuarioContrasena" />
+                    <p:selectOneMenu id="usuarioContrasena" value="#{usuarioCon.usuario.usuarioContrasena}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{usuarioCon.listarUsuarioContrasena()}" var="contra" itemValue="#{contra.idUsuario}" itemLabel="#{contra.usuario}"/>
+                    </p:selectOneMenu>
+                    
+                    
+                </p:panelGrid>
+                
+                <p:commandButton id="btnRegistrar" value="Registrar" action="#{usuarioCon.registrarUsuario()}"></p:commandButton>
+            </h:form>
+        </f:view>
+
+        
+    </h:body>
+</html>
+

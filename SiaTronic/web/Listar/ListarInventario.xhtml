@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <p:dataTable value="#{inventarioCon.listarInventario()}" var="item">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Serie"/>
+                        </f:facet>
+                        <h:outputText value="#{item.serie}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombre"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nombre}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Descripcion"/>
+                        </f:facet>
+                        <h:outputText value="#{item.descripcion}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="ValorUnitario"/>
+                        </f:facet>
+                        <h:outputText value="#{item.valorUnitario}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cantidad"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cantidad}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdProveedor"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idProveedor.idProveedor}"/>
+                    </p:column>
+                    
+                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Modificiar"/>
+                        </f:facet>
+                         <h:commandButton id="btnmodificador" value="Modificar" action="#{inventarioCon.actualizarInventario(item)}"></h:commandButton>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Eliminar"/>
+                        </f:facet>
+                        <h:commandButton id="btneliminar" value="Eliminar" action="#{ inventarioCon.eliminarInventario(item)}" ></h:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+
+        
+    </h:body>
+</html>
+

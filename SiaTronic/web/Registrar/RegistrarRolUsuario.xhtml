@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdRolUsuario:" for="idRolUsuario" />
+                    <p:inputText id="idRolUsuario" value="#{rolCon.rolusuario.idRolUsuario}" title="IdRolUsuario" required="true" requiredMessage="The IdRolUsuario field is required."/>
+                    <p:outputLabel value="IdRol:" for="idRol" />
+                    <p:selectOneMenu id="idRol" value="#{rolUsuarioCon.rol.idRol}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{rolUsuarioCon.listarRol()}" var="role" itemValue="#{role.idRol}" itemLabel="#{role.rol}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="IdUsuario:" for="idUsuario" />
+                    <p:selectOneMenu id="idUsuario" value="#{rolCon.rolusuario.idUsuario}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{rolUsuarioCon.listarUsuario()}" var="usuari" itemValue="#{usuari.idUsuario}" itemLabel="#{usuari.nombre}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+                <p:commandButton id="bteRegistrar" value="Registrar" action="#{rolUsuarioCon.registrarRolUsuario()}"></p:commandButton>
+                
+            </h:form>
+        </f:view>
+
+        
+    </h:body>
+</html>
+

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top"></ui:insert>
+            
+            <h:form>
+            
+              <div id="nav-siatronic" >
+                    <p:graphicImage id="logotipo" url="../resources/imagenes/logosiatronic.png"/>
+                    <div id="sigla"><p>SIA-TRONIC</p></div> 
+                    <div id="menu">
+                        <ul id="lista1">
+                            <li><p:commandLink>Quienes Somos</p:commandLink></li>
+                            <li><p:commandLink>Inicio</p:commandLink></li>
+                            <li><p:commandLink>Contactanos</p:commandLink></li>
+                        </ul>    
+                    </div>     
+                </div>
+            
+            
+            
+            
+            </h:form>
+        </div>
+        
+        <div>
+            <div id="left">
+                <ui:insert name="left"></ui:insert>
+                
+                 <h:form>          
+                    <p:growl id="messages" showDetail="true" />
+                    <p:tieredMenu style="width:200px">
+                        <p:submenu label="inventarios" icon="ui-icon-refresh">
+                            <p:menuitem value="Consultar Inventario" actionListener="#{inventarioCon.listarInventario()}" outcome="/Templates/ClienteListarInventario.xhtml" />
+                            <p:menuitem value="Adicinar Invenario" actionListener="#{inventarioCon.registrarInventario()}" outcome="/Templates/ClienteRegistrarInventario.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Proveedores" icon="ui-icon-newwin">
+                            <p:menuitem value="Consultar Proveedores" outcome="/Templates/ClienteListarProveedores.xhtml" />
+                            <p:menuitem value="Adicionar Proveedores" outcome="/Templates/ClienteRegistrarProveedores.xhtml" />
+                        </p:submenu>
+                        <p:separator />
+                        <p:submenu label="Equipos" icon="ui-icon-extlink">
+                          
+                                <p:menuitem value="Consultar TipoEquipos" outcome="/Templates/ClienteListarTipoEquipo.xhtml" />
+                                <p:menuitem value="Adicionar TipoEquipos" outcome="/Templates/ClienteRegistrarTipoEquipo.xhtml" />
+                           
+                            
+                        </p:submenu>
+                    </p:tieredMenu>
+
+                    <p:separator />
+
+                    <p:commandButton id="dynaButton" value="Otros roles" type="button" icon="ui-icon-extlink" />
+                    <p:tieredMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom" style="width:200px">
+                        <p:submenu label="Bodega">
+                            <p:menuitem value="Registrar incidente" icon="ui-icon-disk" />
+                            <p:menuitem value="Consultar incidente" icon="ui-icon-disk" />
+                            <p:menuitem value="Cerrar incidente" icon="ui-icon-arrowrefresh-1-w" />
+                        </p:submenu>
+                        <p:submenu label="Calidad">
+                            <p:menuitem value="Registrar diagnóstico" icon="ui-icon-disk" />
+                            <p:menuitem value="Consultar incidente" icon="ui-icon-arrowrefresh-1-w" />
+                        </p:submenu>
+                        <p:submenu label="Laboratorio">
+                            <p:menuitem value="Registrar diagnóstico" icon="ui-icon-disk" />
+                            <p:menuitem value="Consultar inciente" icon="ui-icon-arrowrefresh-1-w" />
+                            <p:menuitem value="Registrar reparación" icon="ui-icon-arrowrefresh-1-w" />
+                        </p:submenu>
+                    </p:tieredMenu>
+                </h:form>
+                
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content"></ui:insert>
+                <h:form>
+                    
+                </h:form> 
+               
+                
+            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom"></ui:insert>
+            
+            <h:form>
+                <p>Servicio Nacional de Aprendizaje - SENA, Centro de Servicios Financieros, ADSI - 2018 GAES 8</p>
+            </h:form>
+            
+        </div>
+
+    </h:body>
+
+</html>
